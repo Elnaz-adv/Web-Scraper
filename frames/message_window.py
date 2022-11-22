@@ -1,4 +1,4 @@
-import tkinter as tkinter
+import tkinter as tk
 from tkinter import ttk
 import datetime
 import requests
@@ -6,7 +6,7 @@ from PIL import Image, ImageTk
 
 class MessageWindow(tk.Canvas):
     def __init__(self, container,*args, **kwargs):
-        super.__init__(container,*args,**kwargs, highlighttickness = 0)
+        super().__init__(container,*args,**kwargs, highlightthickness = 0)
 
         self.message_frame =ttk.Frame(self)
         self.message_frame.columnconfigure(0,weight=1)
@@ -20,21 +20,19 @@ class MessageWindow(tk.Canvas):
             self.itemconfig(self.scrollable_window,width=self.winfo_width())
 
         self.bind("<Configure>",configure_window_size)
-        self.messages_frame.bind("<Configure>",configure_scroll_region)
+        self.message_frame.bind("<Configure>",configure_scroll_region)
+        self.bind_all("<MouseWheel>", self._on_mouseWheel)
 
         scrollbar =ttk.Scrollbar(container,orient="vertical",command=self.yview)
         scrollbar.grid(row=0 ,column=1, sticky="NS")
 
         self.configure(yscrollcommand=scrollbar.set)
         self.yview_moveto(1.0)
-
-    def get_messages(self):
-        global messages
-        messages = requests.get("http://167.99.63.70/messages").json()
-        self.messages_window.update_message_widgets()
     
+    def _on_mouseWheel(self,event):
+        self.yview_scroll(-int(event.delta/120),"units")
 
-    def update_message_widgets(self):
+    def update_message_widgets(self,messages,message_labels):
         existing_labels = [
             (message["text"], time["text"]) for message, time in message_labels
         ]
@@ -48,10 +46,15 @@ class MessageWindow(tk.Canvas):
                 self._create_message_container(message["message"], message_time, message_labels)
     
     def _create_message_container(self, message_content, message_time, message_labels):
-        container = ttk.Frame(self.messages_window)
+        container = ttk.Frame(self.message_frame)
         container.columnconfigure(1, weight=1)
         container.grid(sticky="EW", padx=(10, 50), pady=10)
 
+        def reconfigure_container(event):
+            for lable,_ in message_labels:
+                lable.configure(wraplength=container.winfo_width()-130)
+
+        container.bind("<Configure>",reconfigure_container)
         self._create_message_bubble(container, message_content, message_time, message_labels)
     
     def _create_message_bubble(self, container, message_content, message_time, message_labels):
@@ -81,6 +84,7 @@ class MessageWindow(tk.Canvas):
         message_label = ttk.Label(
             container,
             text=message_content,
+            wraplength=800,
             anchor="w",
             justify="left"
         )

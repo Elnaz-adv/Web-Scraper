@@ -14,8 +14,8 @@ class Chat(ttk.Frame):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
 
-        self.messages_window = MessageWindow(self)
-        self.messages_window.grid(row=0, column=0, sticky="NSEW", pady=5)
+        self.message_window = MessageWindow(self)
+        self.message_window.grid(row=0, column=0, sticky="NSEW", pady=5)
 
         input_frame = ttk.Frame(self, padding=10)
         input_frame.grid(row=1, column=0, sticky="EW")
@@ -26,11 +26,11 @@ class Chat(ttk.Frame):
             command=self.get_messages
         )
         message_fetch.pack()
-        self.messages_window.update_message_widgets()
+        self.message_window.update_message_widgets(messages,message_labels)
 
     def get_messages(self):
         global messages
         messages = requests.get("http://167.99.63.70/messages").json()
-        self.messages_window.update_message_widgets()
+        self.message_window.update_message_widgets(messages,message_labels)
     
     
