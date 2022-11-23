@@ -16,16 +16,16 @@ class Chat(ttk.Frame):
     '''
     This Class contains all the related functions related to sending/recieving the messages.
     '''
-    def __init__(self, container, *args, **kwargs):
+    def __init__(self, container,background, *args, **kwargs):
         super().__init__(container, *args, **kwargs)
 
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
 
-        self.message_window = MessageWindow(self)
+        self.message_window = MessageWindow(self,background=background)
         self.message_window.grid(row=0, column=0, sticky="NSEW", pady=5)
 
-        input_frame = ttk.Frame(self, padding=10)
+        input_frame = ttk.Frame(self,style="Controls.TFrame",padding=10)
         input_frame.grid(row=1, column=0, sticky="EW")
 
         self.message_input = tk.Text(input_frame, height=3)
@@ -35,24 +35,27 @@ class Chat(ttk.Frame):
         self.message_submit = ttk.Button(
             input_frame,
             text="Send",
+            style="SendButton.TButton",
             width= 15,
             command=lambda: [self.post_message(), self.change_avatar()]
             )
         
         self.message_submit.pack()
 
-        message_fetch = ttk.Button(
+        message_recieve = ttk.Button(
             input_frame,
             text="Recieve",
+            style="RecieveButton.TButton",
             width= 15,
             command=self.get_messages,
         )
         
-        message_fetch.pack()
+        message_recieve.pack()
 
         message_Quit = ttk.Button(
             input_frame,
             text="Quit",
+            style="QuitButton.TButton",
             width= 15,
             command=quit,
         )

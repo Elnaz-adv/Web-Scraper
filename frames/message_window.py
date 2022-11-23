@@ -15,7 +15,7 @@ class MessageWindow(tk.Canvas):
     def __init__(self, container, *args, **kwargs):
         super().__init__(container, *args, **kwargs, highlightthickness=0)
 
-        self.messages_frame = ttk.Frame(container)
+        self.messages_frame = ttk.Frame(container,style="Messages.TFrame")
         self.messages_frame.columnconfigure(0, weight=1)
 
         ######      scrollbar      
@@ -57,7 +57,7 @@ class MessageWindow(tk.Canvas):
                 self._create_message_container(message["message"], message_time, message_labels)
     
     def _create_message_container(self, message_content, message_time, message_labels):
-        container = ttk.Frame(self.messages_frame)
+        container = ttk.Frame(self.messages_frame,style="Messages.TFrame")
         container.columnconfigure(1, weight=1)
         container.grid(sticky="EW", padx=(10, 50), pady=10)
 
@@ -76,9 +76,10 @@ class MessageWindow(tk.Canvas):
         self.avatar_image = Image.open("./assets/fox.jpg")
         avatar_photo = ImageTk.PhotoImage(self.avatar_image)
 
-        self.avatar_label = tk.Label(
+        self.avatar_label = ttk.Label(
             container,
-            image=avatar_photo
+            image=avatar_photo,
+            style="Avatar.TLabel",
         )
         ##### .   to prevent garbage collection from deleting the image
         self.avatar_label.image = avatar_photo
@@ -94,16 +95,18 @@ class MessageWindow(tk.Canvas):
         time_label = ttk.Label(
             container,
             text=message_time,
+            style="Time.TLabel",
         )
 
         time_label.grid(row=0, column=1, sticky="NEW")
 
-        message_label = tk.Label(
+        message_label = ttk.Label(
             container,
             text=message_content,
             wraplength=800,
             justify="left",
-            anchor="w"
+            anchor="w",
+            style="Message.TLabel",
         )
 
         message_label.grid(row=1, column=1, sticky="NEW")
