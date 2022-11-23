@@ -2,15 +2,15 @@ import tkinter as tk
 from frames.chat import Chat
 
 
-
 class Messenger(tk.Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.geometry("1200x500")
+        self.title("Chatbox")
+        self.minsize(800, 500)
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-        #self.minsize(800,500)
 
         self.chat_frame = Chat(self)
 
@@ -20,4 +20,3 @@ class Messenger(tk.Tk):
 
 root = Messenger()
 root.mainloop()
-
