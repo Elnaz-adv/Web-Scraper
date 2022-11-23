@@ -5,7 +5,7 @@ from frames.message_window import MessageWindow
 from PIL import Image, ImageTk
 
 messages = [{
-    "message": "Give what you want to know url,header or data?", 
+    "message": "Welcome to http://httpbin.org/get \n Please give what you would like to know : url,text or status_code? \n for sending information press SEND Button \n for Recieving the information press RECIEVE Button" , 
     "date": 15498487,
     "answer":"url"}]
 message_labels = []
@@ -34,7 +34,7 @@ class Chat(ttk.Frame):
 
         self.message_submit = ttk.Button(
             input_frame,
-            text="Send your Request",
+            text="Send",
             width= 15,
             command=lambda: [self.post_message(), self.change_avatar()]
             )
@@ -43,7 +43,7 @@ class Chat(ttk.Frame):
 
         message_fetch = ttk.Button(
             input_frame,
-            text="Recieve Data",
+            text="Recieve",
             width= 15,
             command=self.get_messages,
         )
@@ -61,10 +61,8 @@ class Chat(ttk.Frame):
 
 
     def change_avatar(self):
-        print(self.message_window.avatar_label)
-        if self.message_submit["text"]=="Send your Request":
-            self.new_img = ImageTk.PhotoImage(Image.open('./assets/rat.jpg'))
-            
+        if self.message_submit["text"]=="Send":
+            self.new_img = ImageTk.PhotoImage(Image.open('./assets/rat.jpg'))           
         else:
             self.new_img = ImageTk.PhotoImage(Image.open('./assets/fox.jpg'))
          
@@ -84,15 +82,20 @@ class Chat(ttk.Frame):
 
     def get_messages(self):
         global messages
+        myurl= "http://httpbin.org/get"
         if self.body == "url":
             payload = {'message':'firstMessage','data':272675462}
-            messages_str = requests.get("https://httpbin.org/post", params=payload)
-            messages[0]["message"] = str(messages_str.url)
+            recieved_msg = requests.get(url=myurl, params=payload)
+            messages[0]["message"] = str(recieved_msg.url)
             
+        elif self.body == "text":
+            payload = {'message':'firstMessage','data':272675462}
+            recieved_msg = requests.get(url=myurl, params=payload)
+            messages[0]["message"] = str(recieved_msg.text)
         else:
-            payload = {'message':'sth else','data':272675462}
-            messages_str = requests.get("https://httpbin.org/post", params=payload)
-            messages[0]["message"] = str(messages_str.text)
+            payload = {'message':'firstMessage','data':272675462}
+            recieved_msg = requests.get(url=myurl, params=payload)
+            messages[0]["message"] = str(recieved_msg.status_code)
 
         self.message_window.update_message_widgets(messages, message_labels)
         self.after(150, lambda: self.message_window.yview_moveto(1.0))

@@ -7,7 +7,7 @@ class Messenger(tk.Tk):
         super().__init__(*args, **kwargs)
 
         self.geometry("1200x500")
-        self.title("Chatbox")
+        self.title("Web Scraper")
         self.minsize(800, 500)
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
