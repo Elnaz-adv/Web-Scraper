@@ -4,7 +4,7 @@
 
 ## Table of Contents
 * [General Info](#general-information)
-* [Technologies Used](#technologies-used)
+* [Libraries Used](#libraries-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
@@ -21,9 +21,9 @@
 - Which problem is solved? Through a tkinter GUI interface you can make a communication for the user easier
 
 
-## Technologies Used
-- Tech 1 - tkinter 
-- Tech 2 - requests
+## Libraries Used
+- Lib 1 - tkinter 
+- Lib 2 - requests
 
 
 
@@ -35,12 +35,24 @@
 - send ,recieve and quit buttons for communication
 - screen is adjusted to the message length
 
-### How is the scrollbar written?
+#### How is the scrollable container made?
+
+ scrollable container is done with tk.Canvas.
+
+ steps to do the Frame:
+ 1. make a container(our window) 
+ 2.  make a Canvas and put it on the container
+ 3.  put a frame inside it.
+ 4. tell the Canvas ,what size the frame is, so it know how much it can scroll.
+ 5. put your elements inside the inner frame
+ 6. use Canvas scrolling to move about the inner frame
 
 
 
 ## Screenshots
 ![Example screenshot](/assets/screenshot1.png)
+![Example screenshot](/assets/rat.jpg)
+![Example screenshot](./assets/rat.jpg)
 
 
 ## Setup
