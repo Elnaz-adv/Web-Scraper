@@ -40,7 +40,7 @@
 
 
 ## Screenshots
-![Example screenshot](./assets/screenshot1.png)
+![Example screenshot](/assets/screenshot1.png)
 
 
 ## Setup
