@@ -52,7 +52,7 @@
 ## Screenshots
 ![Example screenshot](/assets/screenshot1.png)
 ![Example screenshot](/assets/rat.jpg)
-![Example screenshot](./assets/rat.jpg)
+![Example screenshot](./assets/fox.jpg)
 
 
 ## Setup
