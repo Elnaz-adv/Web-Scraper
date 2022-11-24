@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+from dateutil import tz
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -56,9 +57,8 @@ class MessageWindow(tk.Canvas):
         ]
 
         for message in messages:
-            message_time = datetime.datetime.fromtimestamp(message["date"]).strftime(
-                "%d-%m-%Y %H:%M:%S"
-            )
+            now = datetime.now(tz=tz.tzlocal()).strftime("%A, %B %d, %Y at %H:%M %p %Z")
+            message_time = now
 
             if (message["message"], message_time) not in existing_labels:
                 self._create_message_container(message["message"], message_time, message_labels)
@@ -83,7 +83,7 @@ class MessageWindow(tk.Canvas):
     
     def _create_message_bubble(self, container, message_content, message_time, message_labels):
         '''
-        Creates the lables for sending the messages.
+        Creates the lables for sending the
         '''
         self.avatar_image = Image.open("./assets/fox.jpg")
         avatar_photo = ImageTk.PhotoImage(self.avatar_image)

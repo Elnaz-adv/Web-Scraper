@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import ttk
+from datetime import date
 import requests
 from frames.message_window import MessageWindow
 from PIL import Image, ImageTk
 
 messages = [{
     "message": "Welcome to http://httpbin.org/get \n Please give what you would like to know : url,text or status_code? \n for sending information press SEND Button \n for Recieving the information press RECIEVE Button" , 
-    "date": 15498487,
-    "answer":"url"}]
+    }]
 message_labels = []
 
 
@@ -83,7 +83,6 @@ class Chat(ttk.Frame):
         self.body = self.message_input.get("1.0", "end").strip()
         print(self.body)
         messages[0]["message"] = str(self.body)
-        messages[0]["date"] = 23457687
         self.message_window.update_message_widgets(messages, message_labels)
         self.after(150, lambda: self.message_window.yview_moveto(1.0))
         self.message_input.delete('1.0', "end")
