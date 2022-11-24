@@ -12,13 +12,16 @@ SCREEN_SIZE_TO_MESSAGE_WIDTH = {
 
 
 class MessageWindow(tk.Canvas):
+    '''
+    Handels all the related functions for GUI
+    '''
     def __init__(self, container, *args, **kwargs):
         super().__init__(container, *args, **kwargs, highlightthickness=0)
 
         self.messages_frame = ttk.Frame(container,style="Messages.TFrame")
         self.messages_frame.columnconfigure(0, weight=1)
 
-        ######      scrollbar      
+        ######      creating scrollbar      
         self.scrollable_window = self.create_window((0, 0), window=self.messages_frame, anchor="nw", width=self.winfo_width())
 
         def configure_scroll_region(event):
@@ -36,14 +39,18 @@ class MessageWindow(tk.Canvas):
 
         self.configure(yscrollcommand=scrollbar.set)
         self.yview_moveto(1.0)
-    
-    ######     scrollbar reaction by mouse event 
+
     def _on_mousewheel(self, event):
+        '''
+        Defines a reaction of scrollbar to the mouse event.
+        '''
         self.yview_scroll(-int(event.delta/120), "units")
 
     
-    #####   handling the messages
     def update_message_widgets(self, messages, message_labels):
+        '''
+        Update the message widgets with the upcomming not existing messages.
+        '''
         existing_labels = [
             (message["text"], time["text"]) for message, time in message_labels
         ]
@@ -61,8 +68,10 @@ class MessageWindow(tk.Canvas):
         container.columnconfigure(1, weight=1)
         container.grid(sticky="EW", padx=(10, 50), pady=10)
 
-        ########  resize the lables, whenever we change the window size manuell
         def reconfigure_message_labels(event):
+            '''
+            Resizes the lables, whenever we change the window size manually
+            '''
             closest_break_point = min(SCREEN_SIZE_TO_MESSAGE_WIDTH.keys(), key=lambda b: abs(b - container.winfo_width()))
             for label, _ in message_labels:
                 if label.winfo_width() < closest_break_point:
@@ -73,6 +82,9 @@ class MessageWindow(tk.Canvas):
         self._create_message_bubble(container, message_content, message_time, message_labels)
     
     def _create_message_bubble(self, container, message_content, message_time, message_labels):
+        '''
+        Creates the lables for sending the messages.
+        '''
         self.avatar_image = Image.open("./assets/fox.jpg")
         avatar_photo = ImageTk.PhotoImage(self.avatar_image)
 
@@ -81,7 +93,7 @@ class MessageWindow(tk.Canvas):
             image=avatar_photo,
             style="Avatar.TLabel",
         )
-        ##### .   to prevent garbage collection from deleting the image
+        #####    to prevent garbage collection from deleting the image
         self.avatar_label.image = avatar_photo
         self.avatar_label.grid(
             row=0,

@@ -14,7 +14,7 @@ message_labels = []
 class Chat(ttk.Frame):
 
     '''
-    This Class contains all the related functions related to sending/recieving the messages.
+    Handels all the related functions for sending/recieving the messages.
     '''
     def __init__(self, container,background, *args, **kwargs):
         super().__init__(container, *args, **kwargs)
@@ -64,6 +64,9 @@ class Chat(ttk.Frame):
 
 
     def change_avatar(self):
+        '''
+        Change the avatar for different Buttons.
+        '''
         if self.message_submit["text"]=="Send":
             self.new_img = ImageTk.PhotoImage(Image.open('./assets/rat.jpg'))           
         else:
@@ -74,6 +77,9 @@ class Chat(ttk.Frame):
             
     
     def post_message(self):
+        '''
+        Return the messages from user.
+        '''
         self.body = self.message_input.get("1.0", "end").strip()
         print(self.body)
         messages[0]["message"] = str(self.body)
@@ -84,6 +90,9 @@ class Chat(ttk.Frame):
         
 
     def get_messages(self):
+        '''
+        Get the messages from server.
+        '''
         global messages
         myurl= "http://httpbin.org/get"
         if self.body == "url":
