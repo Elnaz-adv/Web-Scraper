@@ -12,7 +12,7 @@
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
+
 <!-- * [License](#license) -->
 
 
@@ -33,28 +33,30 @@ List the ready features here:
 - avatar for users
 - scrollable message field
 - send ,recieve and quit buttons for communication
-- window size is limited
+- screen is adjusted to the message length
 
 ### How is the scrollbar written?
 
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+![Example screenshot](./assets//screenshot1.41.png.png)
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+You can find the setting by Pipfile.lock 
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+Here how you can start the program in main file:
 
-`write-your-code-here`
+`from Messanger import Messenger
+
+
+if __name__ == "__main__":
+    root = Messenger()
+    styler = root.style_container()
+    root.mainloop() `
 
 
 ## Project Status
@@ -65,18 +67,12 @@ Project is:  / _complete_ /
 Room for improvement:
 - The website could be given by user
 - The website information could be expended
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
+- error handling should be added.
 
 
 ## Acknowledgements
 
 
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 
 
 <!-- Optional -->
