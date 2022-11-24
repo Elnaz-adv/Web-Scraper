@@ -21,6 +21,8 @@
 - Which problem is solved? Through a tkinter GUI interface you can make a communication for the user easier
 
 
+
+
 ## Libraries Used
 - Lib 1 - tkinter 
 - Lib 2 - requests
@@ -49,11 +51,15 @@
 
 
 
+
 ## Screenshots
 ![Example screenshot](/assets/screenshot1.png)
 
+
+
 ## Setup
 You can find the setting by Pipfile.lock 
+
 
 
 ## Usage
@@ -70,8 +76,10 @@ if __name__ == "__main__":
 ```
 
 
+
 ## Project Status
 Project is:  / _complete_ / 
+
 
 
 ## Room for Improvement
