@@ -40,7 +40,7 @@ List the ready features here:
 
 
 ## Screenshots
-![Example screenshot](./assets//screenshot1.41.png.png)
+![Example screenshot](./assets//screenshot1.png)
 
 
 ## Setup
