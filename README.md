@@ -28,7 +28,7 @@
 
 
 ## Features
-List the ready features here:
+
 - message label with time stempel
 - avatar for users
 - scrollable message field
@@ -40,7 +40,7 @@ List the ready features here:
 
 
 ## Screenshots
-![Example screenshot](./assets//screenshot1.png)
+![Example screenshot](./assets/screenshot1.png)
 
 
 ## Setup
@@ -50,13 +50,15 @@ You can find the setting by Pipfile.lock
 ## Usage
 Here how you can start the program in main file:
 
-`from Messanger import Messenger
+```
+from Messanger import Messenger
 
 
 if __name__ == "__main__":
     root = Messenger()
     styler = root.style_container()
-    root.mainloop() `
+    root.mainloop()  
+```
 
 
 ## Project Status
