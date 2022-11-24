@@ -11,7 +11,7 @@
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
+
 
 <!-- * [License](#license) -->
 
@@ -79,9 +79,6 @@ Room for improvement:
 - The website could be given by user
 - The website information could be expended
 - error handling should be added.
-
-
-## Acknowledgements
 
 
 
