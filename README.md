@@ -39,7 +39,7 @@
 
  scrollable container is done with tk.Canvas.
 
- steps to do the Frame:
+ ### Steps to do the Frame:
  1. make a container(our window) 
  2.  make a Canvas and put it on the container
  3.  put a frame inside it.
@@ -51,9 +51,6 @@
 
 ## Screenshots
 ![Example screenshot](/assets/screenshot1.png)
-![Example screenshot](/assets/rat.jpg)
-![Example screenshot](./assets/fox.jpg)
-
 
 ## Setup
 You can find the setting by Pipfile.lock 
