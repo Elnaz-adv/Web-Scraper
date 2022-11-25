@@ -1,6 +1,6 @@
 # Project Name
 > Web Scraper: you can use it to get different information from websites.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -20,7 +20,26 @@
 - requests get() and post() are used for the communication with the website.
 - Which problem is solved? Through a tkinter GUI interface you can make a communication for the user easier
 
+> The Program contain out of 3 classes:
 
+### Chat
+It contains following functions:
+- change_avatar
+- post messages
+- send messages
+
+### Mesage window
+It contains following functions:
+- scrollable frame
+- mouse control over scrollable frame
+- update message widgets
+- create message container
+- reconfigure message labels
+- create message bubble
+
+### Messenger
+It contains following functions:
+- style container
 
 
 ## Libraries Used
@@ -84,9 +103,9 @@ Project is:  / _complete_ /
 
 ## Room for Improvement
 Room for improvement:
-- The website could be given by user
-- The website information could be expended
-- error handling should be added.
+- Any random website could be given by user
+- Any random website information could be rquested
+- error handling should react, if the requested information couldn't be executed.
 
 
 

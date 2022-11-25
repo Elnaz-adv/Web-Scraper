@@ -6,7 +6,7 @@ from frames.message_window import MessageWindow
 from PIL import Image, ImageTk
 
 messages = [{
-    "message": "Welcome to http://httpbin.org/get \n Please give what you would like to know : url,text or status_code? \n for sending information press SEND Button \n for Recieving the information press RECIEVE Button" , 
+    "message": "Welcome to http://httpbin.org/get \n Please give what you would like to know:\n url ,text or status_code? \n for sending information press SEND Button \n for Recieving the information press RECIEVE Button" , 
     }]
 message_labels = []
 
@@ -15,6 +15,12 @@ class Chat(ttk.Frame):
 
     '''
     Handels all the related functions for sending/recieving the messages.
+
+    Functions:
+    - change avatar
+    - send messages
+    - get messages
+    
     '''
     def __init__(self, container,background, *args, **kwargs):
         super().__init__(container, *args, **kwargs)
@@ -81,7 +87,6 @@ class Chat(ttk.Frame):
         Return the messages from user.
         '''
         self.body = self.message_input.get("1.0", "end").strip()
-        print(self.body)
         messages[0]["message"] = str(self.body)
         self.message_window.update_message_widgets(messages, message_labels)
         self.after(150, lambda: self.message_window.yview_moveto(1.0))
