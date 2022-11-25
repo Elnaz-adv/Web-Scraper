@@ -6,7 +6,7 @@ from frames.message_window import MessageWindow
 from PIL import Image, ImageTk
 
 messages = [{
-    "message": "Welcome to http://httpbin.org/get \n Please give what you would like to know:\n url ,text or status_code? \n for sending information press SEND Button \n for Recieving the information press RECIEVE Button" , 
+    "message": "Welcome to http://httpbin.org/get \n Please give what you would like to know: \n URL , TEXT or  STATUS_CODE? \n for sending information press SEND Button \n for Recieving the information press RECIEVE Button" , 
     }]
 message_labels = []
 
@@ -99,12 +99,12 @@ class Chat(ttk.Frame):
         '''
         global messages
         myurl= "http://httpbin.org/get"
-        if self.body == "url":
+        if self.body == "URL":
             payload = {'message':'firstMessage','data':272675462}
             recieved_msg = requests.get(url=myurl, params=payload)
             messages[0]["message"] = str(recieved_msg.url)
             
-        elif self.body == "text":
+        elif self.body == "TEXT":
             payload = {'message':'firstMessage','data':272675462}
             recieved_msg = requests.get(url=myurl, params=payload)
             messages[0]["message"] = str(recieved_msg.text)
