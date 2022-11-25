@@ -50,7 +50,7 @@ class MessageWindow(tk.Canvas):
     
     def update_message_widgets(self, messages, message_labels):
         '''
-        Update the message widgets with the upcomming not existing messages.
+        Update the message widgets with the upcomming (not existing) messages.
         '''
         existing_labels = [
             (message["text"], time["text"]) for message, time in message_labels
@@ -70,7 +70,7 @@ class MessageWindow(tk.Canvas):
 
         def reconfigure_message_labels(event):
             '''
-            Resizes the lables, whenever we change the window size manually
+            Resizes the lables, whenever the text size changes.
             '''
             closest_break_point = min(SCREEN_SIZE_TO_MESSAGE_WIDTH.keys(), key=lambda b: abs(b - container.winfo_width()))
             for label, _ in message_labels:
@@ -83,7 +83,7 @@ class MessageWindow(tk.Canvas):
     
     def _create_message_bubble(self, container, message_content, message_time, message_labels):
         '''
-        Creates the lables for sending the
+        Creates the lables for sending the messages
         '''
         self.avatar_image = Image.open("./assets/fox.jpg")
         avatar_photo = ImageTk.PhotoImage(self.avatar_image)
